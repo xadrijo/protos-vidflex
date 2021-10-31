@@ -1,0 +1,36 @@
+syntax = "proto3";
+
+package vidflex;
+
+option go_package = "./vidflex/v1";
+
+message Product {
+  int32 id = 1;
+  string label = 2;
+  string type = 3;
+  string url = 4;
+  float weight = 5;
+}
+
+service ProductService {
+  rpc GetProduct (GetProductRequest) returns (GetProductResponse);
+  rpc AddProduct (AddProductRequest) returns (AddProductResponse);
+}
+
+// GetProduct Message Type
+message GetProductRequest {
+  int32 id = 1;
+}
+
+message GetProductResponse {
+  Product product = 1;
+}
+
+// AddProduct Message Type
+message AddProductRequest {
+  Product product = 1;
+}
+
+message AddProductResponse {
+  Product product = 1;
+}
